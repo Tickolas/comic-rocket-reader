@@ -1,16 +1,16 @@
 {
-  "version": "0.0.0",
-  "name": "react-chrome-extension-example",
+  "version": "3.0.0",
+  "name": "Comic Rocker Reader 3",
   "manifest_version": 2,
-  "description": "Example for react-chrome-extension-boilerplate",
+  "description": "Never miss a webcomic page again!",
   "browser_action": {
-    "default_title": "React Chrome Extension Example",
+    "default_title": "Comic Rocker Reader",
     "default_popup": "popup.html"
   },
   "icons": {
-    "16": "img/icon-16.png",
-    "48": "img/icon-48.png",
-    "128": "img/icon-128.png"
+    "16": "img/icon16.png",
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
   },
   "web_accessible_resources": [
     "inject.html"

@@ -1,0 +1,23 @@
+{
+  "version": "3.0.0",
+  "name": "Comic Rocker Reader 3",
+  "manifest_version": 2,
+  "description": "Never miss a webcomic page again!",
+  "browser_action": {
+    "default_title": "Comic Rocker Reader",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "img/icon16.png",
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
+  },
+  "web_accessible_resources": [
+    "inject.html"
+  ],
+  "background": {
+    "page": "background.html"
+  },
+  "permissions": [ "contextMenus", "tabs", "storage", "https://github.com/*" ],
+  "content_security_policy": "default-src 'self'; script-src 'self'; style-src * 'unsafe-inline'; img-src 'self' data:;"
+}

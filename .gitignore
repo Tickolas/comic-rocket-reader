@@ -10,3 +10,4 @@ dev/
 *.pem
 update.xml
 .idea
+legacy

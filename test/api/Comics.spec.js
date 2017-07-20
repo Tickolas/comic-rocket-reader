@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Comics from '../../app/api/Comics';
 //noinspection ES6UnusedImports
-import { ComicsMock } from './Comics.mock';
+import { ComicsMock } from '../mock/Comics.mock';
 
 jest.mock('axios');
 

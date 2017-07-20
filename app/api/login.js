@@ -1,11 +1,11 @@
 import http from 'axios';
-import paths from './paths';
+import paths from './Paths';
 
 function isLoggedIn() {
   return http.get(paths.LOGIN_CHECK).then(() => {
     return true;
   }).catch((error) => {
-    if (401 === error.response.status) {
+    if (error.response.status === 401) {
       return Promise.resolve(false);
     } else {
       throw new Error('Unknown error');

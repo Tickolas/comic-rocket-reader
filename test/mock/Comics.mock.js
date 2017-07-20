@@ -2,9 +2,9 @@ const ComicsMock = [{
   rating: 'PG',
   genres: [],
   name: 'A Mad Tea-Party',
-  idx: 7,
+  idx: 1,
   uri: 'http://www.jonathondalton.com/?p=325',
-  max_idx: 331,
+  max_idx: 42,
   banner_url: 'https://www.comic-rocket.com/public/banner/a-mad-tea-party.gif',
   slug: 'a-mad-tea-party'
 }, {

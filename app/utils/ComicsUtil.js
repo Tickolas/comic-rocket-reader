@@ -9,6 +9,13 @@ function filterUnread(comics) {
   return comics.filter(comic => comic.idx < comic.max_idx);
 }
 
+function countUnreadPages(comics) {
+  validate(comics);
+  return filterUnread(comics).reduce((totalPages, comic) => {
+    return totalPages + 1 + (comic.max_idx - comic.idx);
+  }, 0);
+}
+
 function filterRead(comics) {
   validate(comics);
   return comics.filter(comic => comic.idx === comic.max_idx);
@@ -29,6 +36,7 @@ function filterErroneous(comics) {
 
 module.exports = {
   filterUnread,
+  countUnreadPages,
   filterRead,
   filterErroneous
 };

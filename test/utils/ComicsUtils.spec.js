@@ -70,4 +70,26 @@ describe('ComicsUtils', () => {
       expect(result[0].name).toEqual('Dreamland Chronicles');
     });
   });
+
+  describe('function to count unread pages', () => {
+    it('should exist', () => {
+      expect(ComicsUtils.countUnreadPages).toBeDefined();
+    });
+
+    it('should throw if passed anything but an array', () => {
+      const testData = [123, {}, 'I am not an array'];
+
+      testData.forEach((data) => {
+        expect(() => {
+          ComicsUtils.countUnreadPages(data);
+        }).toThrow();
+      });
+    });
+
+    it('should count number of total unread pages in mock', () => {
+      const result = ComicsUtils.countUnreadPages(mock.ComicsMock);
+
+      expect(result).toEqual(42);
+    });
+  });
 });

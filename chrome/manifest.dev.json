@@ -19,10 +19,8 @@
     "page": "background.html"
   },
   "permissions": [
-    "contextMenus",
     "cookies",
     "management",
-    "tabs",
     "storage",
     "https://www.comic-rocket.com/*"
   ],

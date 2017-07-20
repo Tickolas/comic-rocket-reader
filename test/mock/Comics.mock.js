@@ -7,15 +7,24 @@ const ComicsMock = [{
   max_idx: 331,
   banner_url: 'https://www.comic-rocket.com/public/banner/a-mad-tea-party.gif',
   slug: 'a-mad-tea-party'
-},{
+}, {
   rating: '?',
   genres: [],
-  name: 'Annie in the Forest, part 1 (Gunnerkrigg Court Sidestory)',
+  name: 'Gunnerkrigg Court',
   idx: 34,
-  uri: 'http://www.gunnerkrigg.com/extracomics/comic.php?c=Annie%20in%20the%20Forest%20Part%201&p=33',
+  uri: 'http://www.gunnerkrigg.com/33',
   max_idx: 34,
   banner_url: '',
   slug: 'annie-in-the-forest-part-1-gunnerkrigg-court-sidestory'
+}, {
+  rating: '?',
+  genres: [],
+  name: 'Dreamland Chronicles',
+  idx: 42,
+  uri: 'http://www.dreamlandchronicles.com/33',
+  max_idx: 34,
+  banner_url: '',
+  slug: 'dreamland-chronicles'
 }];
 
 const ComicsDataMock = {

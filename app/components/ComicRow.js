@@ -14,7 +14,7 @@ export default class ComicRow extends Component {
     return (
       <div>
         <div>{this.state.comic.name}</div>
-        <div>[{this.state.comic.idx} / {this.state.comic.max_idx}]</div>
+        <div>[ {this.state.comic.idx} / {this.state.comic.max_idx} ]</div>
       </div>
     );
   }

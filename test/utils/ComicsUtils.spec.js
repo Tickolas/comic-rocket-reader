@@ -24,4 +24,50 @@ describe('ComicsUtils', () => {
       expect(result[0].name).toEqual('A Mad Tea-Party');
     });
   });
+
+  describe('filter comics without any unread pages', () => {
+    it('should exist', () => {
+      expect(ComicsUtils.filterRead).toBeDefined();
+    });
+
+    it('should throw if passed anything but an array', () => {
+      const testData = [123, {}, 'I am not an array'];
+
+      testData.forEach((data) => {
+        expect(() => {
+          ComicsUtils.filterRead(data);
+        }).toThrow();
+      });
+    });
+
+    it('should filter out "Gunnerkrigg" comic with no unread pages', () => {
+      const result = ComicsUtils.filterRead(mock.ComicsMock);
+
+      expect(result).toHaveLength(1);
+      expect(result[0].name).toEqual('Gunnerkrigg Court');
+    });
+  });
+
+  describe('filter comics with erroneous page count', () => {
+    it('should exist', () => {
+      expect(ComicsUtils.filterErroneous).toBeDefined();
+    });
+
+    it('should throw if passed anything but an array', () => {
+      const testData = [123, {}, 'I am not an array'];
+
+      testData.forEach((data) => {
+        expect(() => {
+          ComicsUtils.filterErroneous(data);
+        }).toThrow();
+      });
+    });
+
+    it('should filter out "Dreamland Chronicles" comic with unread pages', () => {
+      const result = ComicsUtils.filterErroneous(mock.ComicsMock);
+
+      expect(result).toHaveLength(1);
+      expect(result[0].name).toEqual('Dreamland Chronicles');
+    });
+  });
 });

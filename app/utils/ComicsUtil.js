@@ -3,9 +3,7 @@ function filterUnread(comics) {
     throw new Error('Must pass an array of comics.');
   }
 
-  return comics.filter((comic) => {
-    return comic.idx < comic.max_idx;
-  });
+  return comics.filter(comic => comic.idx < comic.max_idx);
 }
 
 module.exports = {

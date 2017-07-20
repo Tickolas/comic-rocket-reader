@@ -18,6 +18,11 @@ const ComicsMock = [{
   slug: 'annie-in-the-forest-part-1-gunnerkrigg-court-sidestory'
 }];
 
+const ComicsDataMock = {
+  data: ComicsMock
+};
+
 module.exports = {
-  ComicsMock
+  ComicsMock,
+  ComicsDataMock
 };

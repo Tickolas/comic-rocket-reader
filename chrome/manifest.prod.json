@@ -18,6 +18,12 @@
   "background": {
     "page": "background.html"
   },
-  "permissions": [ "contextMenus", "tabs", "storage", "https://www.comic-rocket.com/*" ],
+  "permissions": [
+    "contextMenus",
+    "cookies",
+    "tabs",
+    "storage",
+    "https://www.comic-rocket.com/*"
+  ],
   "content_security_policy": "default-src 'self'; script-src 'self'; connect-src 'https://www.comic-rocket.com'; style-src * 'unsafe-inline'; img-src 'self' data:;"
 }

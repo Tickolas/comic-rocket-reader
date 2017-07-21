@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
+import {openNewTabFor} from '../utils/ChromeUtils'
 
 export default class ComicRow extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ export default class ComicRow extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div onClick={() => openNewTabFor(this.state.comic, true)}>
           <img src={this.state.comic.banner_url} alt={this.state.comic.name} />
         </div>
         <div>[ {this.state.comic.idx} / {this.state.comic.max_idx} ]</div>

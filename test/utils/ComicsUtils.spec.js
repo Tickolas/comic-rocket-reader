@@ -1,5 +1,5 @@
 import ComicsUtils from '../../app/utils/ComicsUtil';
-import mock from '../mock/Comics.mock';
+import { ComicsMock } from '../mock/Comics.mock';
 
 describe('ComicsUtils', () => {
   describe('filter comics with unread pages', () => {
@@ -18,7 +18,7 @@ describe('ComicsUtils', () => {
     });
 
     it('should filter out "A Mad Tea-Party" comic with unread pages', () => {
-      const result = ComicsUtils.filterUnread(mock.ComicsMock);
+      const result = ComicsUtils.filterUnread(ComicsMock);
 
       expect(result).toHaveLength(1);
       expect(result[0].name).toEqual('A Mad Tea-Party');
@@ -41,7 +41,7 @@ describe('ComicsUtils', () => {
     });
 
     it('should filter out "Gunnerkrigg" comic with no unread pages', () => {
-      const result = ComicsUtils.filterRead(mock.ComicsMock);
+      const result = ComicsUtils.filterRead(ComicsMock);
 
       expect(result).toHaveLength(1);
       expect(result[0].name).toEqual('Gunnerkrigg Court');

@@ -1,5 +1,4 @@
 import BadgeUtils from '../../app/utils/BadgeUtils';
-//noinspection ES6UnusedImports
 import { ComicsMock, ComicWith } from '../mock/Comics.mock';
 
 window.chrome = {

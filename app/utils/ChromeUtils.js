@@ -1,5 +1,5 @@
 function getWrappedUriFor(comic) {
-  return encodeURI(`http://www.comic-rocket.com/read/${comic.slug}/${(comic.idx + 1)}`);
+  return encodeURI(`http://www.comic-rocket.com/read/${comic.slug}/${(comic.idx + 1)}?mark`);
 }
 
 function openNewTabFor(comic, closeExtension) {

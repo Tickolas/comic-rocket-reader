@@ -1,4 +1,4 @@
-const ComicsMock = [{
+const UNREAD_PAGES = {
   rating: 'PG',
   genres: [],
   name: 'A Mad Tea-Party',
@@ -7,7 +7,18 @@ const ComicsMock = [{
   max_idx: 42,
   banner_url: 'https://www.comic-rocket.com/public/banner/a-mad-tea-party.gif',
   slug: 'a-mad-tea-party'
-}, {
+};
+const MANY_UNREAD_PAGES = {
+  rating: 'PG',
+  genres: [],
+  name: 'Bloom County',
+  idx: 1,
+  uri: 'http://www.jonathondalton.com/?p=325',
+  max_idx: 3000,
+  banner_url: 'https://www.comic-rocket.com/public/banner/a-mad-tea-party.gif',
+  slug: 'a-mad-tea-party'
+};
+const NO_UNREAD_PAGES = {
   rating: '?',
   genres: [],
   name: 'Gunnerkrigg Court',
@@ -16,7 +27,8 @@ const ComicsMock = [{
   max_idx: 34,
   banner_url: '',
   slug: 'annie-in-the-forest-part-1-gunnerkrigg-court-sidestory'
-}, {
+};
+const ERRONEOUS_PAGE_COUNT = {
   rating: '?',
   genres: [],
   name: 'Dreamland Chronicles',
@@ -25,7 +37,8 @@ const ComicsMock = [{
   max_idx: 34,
   banner_url: '',
   slug: 'dreamland-chronicles'
-}];
+};
+const ComicsMock = [UNREAD_PAGES, NO_UNREAD_PAGES, ERRONEOUS_PAGE_COUNT];
 
 const ComicsDataMock = {
   data: ComicsMock
@@ -33,5 +46,11 @@ const ComicsDataMock = {
 
 module.exports = {
   ComicsMock,
-  ComicsDataMock
+  ComicsDataMock,
+  ComicWith: {
+    UNREAD_PAGES,
+    NO_UNREAD_PAGES,
+    MANY_UNREAD_PAGES,
+    ERRONEOUS_PAGE_COUNT
+  }
 };

@@ -13,7 +13,9 @@ export default class ComicRow extends Component {
   render() {
     return (
       <div>
-        <div>{this.state.comic.name}</div>
+        <div>
+          <img src={this.state.comic.banner_url} alt={this.state.comic.name} />
+        </div>
         <div>[ {this.state.comic.idx} / {this.state.comic.max_idx} ]</div>
       </div>
     );

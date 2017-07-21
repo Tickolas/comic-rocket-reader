@@ -64,7 +64,7 @@ describe('ComicsUtils', () => {
     });
 
     it('should filter out "Dreamland Chronicles" comic with unread pages', () => {
-      const result = ComicsUtils.filterErroneous(mock.ComicsMock);
+      const result = ComicsUtils.filterErroneous(ComicsMock);
 
       expect(result).toHaveLength(1);
       expect(result[0].name).toEqual('Dreamland Chronicles');
@@ -87,7 +87,7 @@ describe('ComicsUtils', () => {
     });
 
     it('should count number of total unread pages in mock', () => {
-      const result = ComicsUtils.countUnreadPages(mock.ComicsMock);
+      const result = ComicsUtils.countUnreadPages(ComicsMock);
 
       expect(result).toEqual(42);
     });

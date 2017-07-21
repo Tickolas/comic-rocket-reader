@@ -3,6 +3,7 @@ import Comics from '../api/Comics';
 import Login from '../api/Login';
 import ComicsList from './ComicsList';
 import { filterUnread } from '../utils/ComicsUtil';
+import { updateBadgeText } from '../utils/BadgeUtils'
 
 export default class MainSection extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ export default class MainSection extends Component {
 
     Comics.get().then((comics) => {
       this.setState({ unreadComics: filterUnread(comics) });
+      updateBadgeText(comics);
     });
   }
 

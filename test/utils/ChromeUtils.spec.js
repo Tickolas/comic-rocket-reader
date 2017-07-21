@@ -17,7 +17,7 @@ describe('ChromeUtils', () => {
       ChromeUtils.openNewTabFor(ComicWith.UNREAD_PAGES);
 
       expect(window.chrome.tabs.create).toHaveBeenCalledWith({
-        active: false, url: encodeURI(ComicWith.UNREAD_PAGES.uri)
+        active: false, url: 'http://www.comic-rocket.com/read/a-mad-tea-party/2'
       });
     });
 
@@ -25,7 +25,15 @@ describe('ChromeUtils', () => {
       ChromeUtils.openNewTabFor(ComicWith.UNREAD_PAGES, true);
 
       expect(window.chrome.tabs.create).toHaveBeenCalledWith({
-        active: true, url: encodeURI(ComicWith.UNREAD_PAGES.uri)
+        active: true, url: 'http://www.comic-rocket.com/read/a-mad-tea-party/2'
+      });
+    });
+
+    it('should open up a new tab for a comic with special characters in its URL', () => {
+      ChromeUtils.openNewTabFor(ComicWith.UNUSUAL_NAME);
+
+      expect(window.chrome.tabs.create).toHaveBeenCalledWith({
+        active: false, url: 'http://www.comic-rocket.com/read/%C3%A5kes-bilder/2'
       });
     });
   });

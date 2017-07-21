@@ -18,6 +18,16 @@ const MANY_UNREAD_PAGES = {
   banner_url: 'https://www.comic-rocket.com/public/banner/a-mad-tea-party.gif',
   slug: 'a-mad-tea-party'
 };
+const UNUSUAL_NAME = {
+  rating: 'PG',
+  genres: [],
+  name: 'Åkes Bilder',
+  idx: 1,
+  uri: 'http://www.åke.com/?p=2',
+  max_idx: 2,
+  banner_url: 'https://www.comic-rocket.com/public/banner/åkes-bilder.gif',
+  slug: 'åkes-bilder'
+};
 const NO_UNREAD_PAGES = {
   rating: '?',
   genres: [],
@@ -51,6 +61,7 @@ module.exports = {
     UNREAD_PAGES,
     NO_UNREAD_PAGES,
     MANY_UNREAD_PAGES,
-    ERRONEOUS_PAGE_COUNT
+    ERRONEOUS_PAGE_COUNT,
+    UNUSUAL_NAME
   }
 };

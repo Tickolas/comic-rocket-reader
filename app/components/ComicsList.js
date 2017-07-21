@@ -16,7 +16,7 @@ export default class ComicsList extends Component {
       <div>
         {
           this.state.comics.map(comic =>
-            <ComicRow comic={comic} />
+            <ComicRow key={comic.slug} comic={comic} />
           )
         }
       </div>

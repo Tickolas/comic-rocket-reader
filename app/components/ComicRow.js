@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import {openNewTabFor} from '../utils/ChromeUtils'
+import { openNewTabFor } from '../utils/ChromeUtils';
 
 export default class ComicRow extends Component {
   constructor(props) {

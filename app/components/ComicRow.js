@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
-import { openNewTabFor } from '../utils/ChromeUtils';
+import React, { Component } from 'react'
+import { PropTypes } from 'prop-types'
+import { openNewTabFor } from '../utils/ChromeUtils'
 
 export default class ComicRow extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
       comic: props.comic
-    };
+    }
   }
 
-  render() {
+  render () {
     return (
       <div>
         <div onClick={() => openNewTabFor(this.state.comic, true)}>
@@ -19,10 +19,10 @@ export default class ComicRow extends Component {
         </div>
         <div>[ {this.state.comic.idx} / {this.state.comic.max_idx} ]</div>
       </div>
-    );
+    )
   }
 }
 
 ComicRow.propTypes = {
   comic: PropTypes.object
-};
+}

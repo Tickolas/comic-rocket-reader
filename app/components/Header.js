@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default class Header extends Component {
-  render() {
+  render () {
     return (
       <header>
-        <img src="img/reader-logo.png" alt="Comic Rocket Reader" />
+        <img src='img/reader-logo.png' alt='Comic Rocket Reader' />
       </header>
-    );
+    )
   }
 }

@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
-import ComicRow from './ComicRow';
+import React, { Component } from 'react'
+import { PropTypes } from 'prop-types'
+import ComicRow from './ComicRow'
 
 export default class ComicsList extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
       comics: props.comics
-    };
+    }
   }
 
-  render() {
+  render () {
     return (
       <div>
         {
@@ -20,10 +20,10 @@ export default class ComicsList extends Component {
           )
         }
       </div>
-    );
+    )
   }
 }
 
 ComicsList.propTypes = {
   comics: PropTypes.array
-};
+}

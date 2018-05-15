@@ -1,19 +1,19 @@
-import ComicsUtil from '../utils/ComicsUtil';
+import ComicsUtil from '../utils/ComicsUtil'
 
-function getBadgeTextFor(comics) {
-  let unreadPagesCount = ComicsUtil.countUnreadPages(comics) || '';
+function getBadgeTextFor (comics) {
+  let unreadPagesCount = ComicsUtil.countUnreadPages(comics) || ''
   if (Number.isInteger(unreadPagesCount) && unreadPagesCount > 999) {
-    unreadPagesCount = '...';
+    unreadPagesCount = '...'
   }
-  return unreadPagesCount;
+  return unreadPagesCount
 }
 
-function updateBadgeText(comics) {
+function updateBadgeText (comics) {
   window.chrome.browserAction.setBadgeText(
     { text: getBadgeTextFor(comics) }
-  );
+  )
 }
 
 module.exports = {
   updateBadgeText
-};
+}

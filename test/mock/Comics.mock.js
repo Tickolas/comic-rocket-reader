@@ -7,7 +7,7 @@ const UNREAD_PAGES = {
   max_idx: 42,
   banner_url: 'https://www.comic-rocket.com/public/banner/a-mad-tea-party.gif',
   slug: 'a-mad-tea-party'
-};
+}
 const MANY_UNREAD_PAGES = {
   rating: 'PG',
   genres: [],
@@ -17,7 +17,7 @@ const MANY_UNREAD_PAGES = {
   max_idx: 3000,
   banner_url: 'https://www.comic-rocket.com/public/banner/a-mad-tea-party.gif',
   slug: 'a-mad-tea-party'
-};
+}
 const UNUSUAL_NAME = {
   rating: 'PG',
   genres: [],
@@ -27,7 +27,7 @@ const UNUSUAL_NAME = {
   max_idx: 2,
   banner_url: 'https://www.comic-rocket.com/public/banner/åkes-bilder.gif',
   slug: 'åkes-bilder'
-};
+}
 const NO_UNREAD_PAGES = {
   rating: '?',
   genres: [],
@@ -37,7 +37,7 @@ const NO_UNREAD_PAGES = {
   max_idx: 34,
   banner_url: '',
   slug: 'annie-in-the-forest-part-1-gunnerkrigg-court-sidestory'
-};
+}
 const ERRONEOUS_PAGE_COUNT = {
   rating: '?',
   genres: [],
@@ -47,21 +47,23 @@ const ERRONEOUS_PAGE_COUNT = {
   max_idx: 34,
   banner_url: '',
   slug: 'dreamland-chronicles'
-};
-const ComicsMock = [UNREAD_PAGES, NO_UNREAD_PAGES, ERRONEOUS_PAGE_COUNT];
+}
+const ComicsMock = [UNREAD_PAGES, NO_UNREAD_PAGES, ERRONEOUS_PAGE_COUNT]
 
 const ComicsDataMock = {
   data: ComicsMock
-};
+}
 
-module.exports = {
+const ComicWith = {
+  UNREAD_PAGES,
+  NO_UNREAD_PAGES,
+  MANY_UNREAD_PAGES,
+  ERRONEOUS_PAGE_COUNT,
+  UNUSUAL_NAME
+}
+
+export {
   ComicsMock,
   ComicsDataMock,
-  ComicWith: {
-    UNREAD_PAGES,
-    NO_UNREAD_PAGES,
-    MANY_UNREAD_PAGES,
-    ERRONEOUS_PAGE_COUNT,
-    UNUSUAL_NAME
-  }
-};
+  ComicWith
+}

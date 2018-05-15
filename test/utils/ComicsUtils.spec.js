@@ -1,95 +1,97 @@
-import ComicsUtils from '../../app/utils/ComicsUtil';
-import { ComicsMock } from '../mock/Comics.mock';
+/* global describe it expect */
+
+import ComicsUtils from '../../app/utils/ComicsUtil'
+import { ComicsMock } from '../mock/Comics.mock'
 
 describe('ComicsUtils', () => {
   describe('filter comics with unread pages', () => {
     it('should exist', () => {
-      expect(ComicsUtils.filterUnread).toBeDefined();
-    });
+      expect(ComicsUtils.filterUnread).toBeDefined()
+    })
 
     it('should throw if passed anything but an array', () => {
-      const testData = [123, {}, 'I am not an array'];
+      const testData = [123, {}, 'I am not an array']
 
       testData.forEach((data) => {
         expect(() => {
-          ComicsUtils.filterUnread(data);
-        }).toThrow();
-      });
-    });
+          ComicsUtils.filterUnread(data)
+        }).toThrow()
+      })
+    })
 
     it('should filter out "A Mad Tea-Party" comic with unread pages', () => {
-      const result = ComicsUtils.filterUnread(ComicsMock);
+      const result = ComicsUtils.filterUnread(ComicsMock)
 
-      expect(result).toHaveLength(1);
-      expect(result[0].name).toEqual('A Mad Tea-Party');
-    });
-  });
+      expect(result).toHaveLength(1)
+      expect(result[0].name).toEqual('A Mad Tea-Party')
+    })
+  })
 
   describe('filter comics without any unread pages', () => {
     it('should exist', () => {
-      expect(ComicsUtils.filterRead).toBeDefined();
-    });
+      expect(ComicsUtils.filterRead).toBeDefined()
+    })
 
     it('should throw if passed anything but an array', () => {
-      const testData = [123, {}, 'I am not an array'];
+      const testData = [123, {}, 'I am not an array']
 
       testData.forEach((data) => {
         expect(() => {
-          ComicsUtils.filterRead(data);
-        }).toThrow();
-      });
-    });
+          ComicsUtils.filterRead(data)
+        }).toThrow()
+      })
+    })
 
     it('should filter out "Gunnerkrigg" comic with no unread pages', () => {
-      const result = ComicsUtils.filterRead(ComicsMock);
+      const result = ComicsUtils.filterRead(ComicsMock)
 
-      expect(result).toHaveLength(1);
-      expect(result[0].name).toEqual('Gunnerkrigg Court');
-    });
-  });
+      expect(result).toHaveLength(1)
+      expect(result[0].name).toEqual('Gunnerkrigg Court')
+    })
+  })
 
   describe('filter comics with erroneous page count', () => {
     it('should exist', () => {
-      expect(ComicsUtils.filterErroneous).toBeDefined();
-    });
+      expect(ComicsUtils.filterErroneous).toBeDefined()
+    })
 
     it('should throw if passed anything but an array', () => {
-      const testData = [123, {}, 'I am not an array'];
+      const testData = [123, {}, 'I am not an array']
 
       testData.forEach((data) => {
         expect(() => {
-          ComicsUtils.filterErroneous(data);
-        }).toThrow();
-      });
-    });
+          ComicsUtils.filterErroneous(data)
+        }).toThrow()
+      })
+    })
 
     it('should filter out "Dreamland Chronicles" comic with unread pages', () => {
-      const result = ComicsUtils.filterErroneous(ComicsMock);
+      const result = ComicsUtils.filterErroneous(ComicsMock)
 
-      expect(result).toHaveLength(1);
-      expect(result[0].name).toEqual('Dreamland Chronicles');
-    });
-  });
+      expect(result).toHaveLength(1)
+      expect(result[0].name).toEqual('Dreamland Chronicles')
+    })
+  })
 
   describe('function to count unread pages', () => {
     it('should exist', () => {
-      expect(ComicsUtils.countUnreadPages).toBeDefined();
-    });
+      expect(ComicsUtils.countUnreadPages).toBeDefined()
+    })
 
     it('should throw if passed anything but an array', () => {
-      const testData = [123, {}, 'I am not an array'];
+      const testData = [123, {}, 'I am not an array']
 
       testData.forEach((data) => {
         expect(() => {
-          ComicsUtils.countUnreadPages(data);
-        }).toThrow();
-      });
-    });
+          ComicsUtils.countUnreadPages(data)
+        }).toThrow()
+      })
+    })
 
     it('should count number of total unread pages in mock', () => {
-      const result = ComicsUtils.countUnreadPages(ComicsMock);
+      const result = ComicsUtils.countUnreadPages(ComicsMock)
 
-      expect(result).toEqual(42);
-    });
-  });
-});
+      expect(result).toEqual(42)
+    })
+  })
+})

@@ -1,24 +1,24 @@
-function validate(comics) {
+function validate (comics) {
   if (!Array.isArray(comics)) {
-    throw new Error('Must pass an array of comics.');
+    throw new Error('Must pass an array of comics.')
   }
 }
 
-function filterUnread(comics) {
-  validate(comics);
-  return comics.filter(comic => comic.idx < comic.max_idx);
+function filterUnread (comics) {
+  validate(comics)
+  return comics.filter(comic => comic.idx < comic.max_idx)
 }
 
-function countUnreadPages(comics) {
-  validate(comics);
+function countUnreadPages (comics) {
+  validate(comics)
   return filterUnread(comics).reduce((totalPages, comic) => {
-    return totalPages + 1 + (comic.max_idx - comic.idx);
-  }, 0);
+    return totalPages + 1 + (comic.max_idx - comic.idx)
+  }, 0)
 }
 
-function filterRead(comics) {
-  validate(comics);
-  return comics.filter(comic => comic.idx === comic.max_idx);
+function filterRead (comics) {
+  validate(comics)
+  return comics.filter(comic => comic.idx === comic.max_idx)
 }
 
 /**
@@ -29,9 +29,9 @@ function filterRead(comics) {
  * @param comics
  * @returns {Array} All erroneous comics.
  */
-function filterErroneous(comics) {
-  validate(comics);
-  return comics.filter(comic => comic.idx > comic.max_idx);
+function filterErroneous (comics) {
+  validate(comics)
+  return comics.filter(comic => comic.idx > comic.max_idx)
 }
 
 module.exports = {
@@ -39,4 +39,4 @@ module.exports = {
   countUnreadPages,
   filterRead,
   filterErroneous
-};
+}

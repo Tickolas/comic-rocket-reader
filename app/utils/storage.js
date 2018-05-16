@@ -1,12 +1,12 @@
 function saveState (state) {
-  chrome.storage.local.set({ state: JSON.stringify(state) })
+  window.chrome.storage.local.set({ state: JSON.stringify(state) })
 }
 
 // todos unmarked count
 function setBadge (todos) {
-  if (chrome.browserAction) {
+  if (window.chrome.browserAction) {
     const count = todos.filter(todo => !todo.marked).length
-    chrome.browserAction.setBadgeText({ text: count > 0 ? count.toString() : '' })
+    window.chrome.browserAction.setBadgeText({ text: count > 0 ? count.toString() : '' })
   }
 }
 

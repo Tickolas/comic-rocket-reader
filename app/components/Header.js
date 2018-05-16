@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Header extends Component {
-  render () {
-    return (
-      <header>
-        <img src='img/reader-logo.png' alt='Comic Rocket Reader' />
-      </header>
-    )
-  }
+const Header = () => {
+  return (
+    <header>
+      <img src='img/reader-logo.png' alt='Comic Rocket Reader' />
+    </header>
+  )
 }
+
+export default Header

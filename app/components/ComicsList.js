@@ -25,5 +25,5 @@ export default class ComicsList extends Component {
 }
 
 ComicsList.propTypes = {
-  comics: PropTypes.array
+  comics: PropTypes.array.isRequired
 }

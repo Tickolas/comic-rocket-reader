@@ -14,7 +14,7 @@ const ComicRow = ({comic}) => {
 }
 
 ComicRow.propTypes = {
-  comic: PropTypes.object
+  comic: PropTypes.object.isRequired
 }
 
 export default ComicRow

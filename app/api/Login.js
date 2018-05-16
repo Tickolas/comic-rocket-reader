@@ -13,6 +13,6 @@ function isLoggedIn () {
   })
 }
 
-module.exports = {
+export default {
   isLoggedIn
 }

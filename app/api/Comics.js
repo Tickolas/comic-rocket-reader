@@ -7,6 +7,6 @@ function get () {
   }).catch(() => Promise.resolve([]))
 }
 
-module.exports = {
+export default {
   get
 }

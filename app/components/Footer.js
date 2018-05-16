@@ -19,7 +19,7 @@ const Footer = ({comics, isLoggedIn}) => {
 
 Footer.propTypes = {
   comics: PropTypes.array.isRequired,
-  isLoggedIn: PropTypes.boolean
+  isLoggedIn: PropTypes.bool
 }
 
 export default Footer

@@ -1,52 +1,24 @@
 /* global describe it expect */
 
 import ComicsUtils from '../../app/utils/ComicsUtil'
-import { ComicsMock } from '../mock/Comics.mock'
+import { ComicsMock, ComicWith } from '../mock/Comics.mock'
 
 describe('ComicsUtils', () => {
-  describe('filter comics with unread pages', () => {
+  describe('function to sort comics into read and unread', () => {
     it('should exist', () => {
-      expect(ComicsUtils.filterUnread).toBeDefined()
+      expect(ComicsUtils.sortReadUnreadComics).toBeDefined()
     })
 
-    it('should throw if passed anything but an array', () => {
-      const testData = [123, {}, 'I am not an array']
-
-      testData.forEach((data) => {
-        expect(() => {
-          ComicsUtils.filterUnread(data)
-        }).toThrow()
-      })
+    it('should throw if comics are invalid', () => {
+      expect(() => ComicsUtils.sortReadUnreadComics('Definitely not comics')).toThrow('Must pass an array of comics.')
     })
 
-    it('should filter out "A Mad Tea-Party" comic with unread pages', () => {
-      const result = ComicsUtils.filterUnread(ComicsMock)
+    it('should sort comics with unread pages from ones with no unread', () => {
+      const result = ComicsUtils.sortReadUnreadComics([ComicWith.UNREAD_PAGES, ComicWith.NO_UNREAD_PAGES, ComicWith.ERRONEOUS_PAGE_COUNT])
 
-      expect(result).toHaveLength(1)
-      expect(result[0].name).toEqual('A Mad Tea-Party')
-    })
-  })
-
-  describe('filter comics without any unread pages', () => {
-    it('should exist', () => {
-      expect(ComicsUtils.filterRead).toBeDefined()
-    })
-
-    it('should throw if passed anything but an array', () => {
-      const testData = [123, {}, 'I am not an array']
-
-      testData.forEach((data) => {
-        expect(() => {
-          ComicsUtils.filterRead(data)
-        }).toThrow()
-      })
-    })
-
-    it('should filter out "Gunnerkrigg" comic with no unread pages', () => {
-      const result = ComicsUtils.filterRead(ComicsMock)
-
-      expect(result).toHaveLength(1)
-      expect(result[0].name).toEqual('Gunnerkrigg Court')
+      expect(result.unreadComics).toEqual([ComicWith.UNREAD_PAGES])
+      expect(result.readComics).toEqual([ComicWith.NO_UNREAD_PAGES])
+      expect(result.erroneousComics).toEqual([ComicWith.ERRONEOUS_PAGE_COUNT])
     })
   })
 

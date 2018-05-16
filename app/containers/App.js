@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 import Login from '../api/Login'
 import Comics from '../api/Comics'
 import { updateBadgeText } from '../utils/BadgeUtils'
-import { filterUnread } from '../utils/ComicsUtil'
+import { sortReadUnreadComics } from '../utils/ComicsUtil'
 
 export default class App extends Component {
   constructor (props) {
@@ -23,7 +23,7 @@ export default class App extends Component {
     })
 
     Comics.get().then((comics) => {
-      this.setState({unreadComics: filterUnread(comics)})
+      this.setState({unreadComics: sortReadUnreadComics(comics).unreadComics})
       updateBadgeText(comics)
     })
   }

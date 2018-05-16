@@ -4,21 +4,32 @@ function validate (comics) {
   }
 }
 
-function filterUnread (comics) {
+const sortReadUnreadComics = (comics) => {
   validate(comics)
-  return comics.filter(comic => comic.idx < comic.max_idx)
+
+  const result = {
+    unreadComics: [],
+    readComics: [],
+    erroneousComics: []
+  }
+
+  comics.forEach(comic => {
+    if (comic.idx < comic.max_idx) {
+      result.unreadComics.push(comic)
+    } else if (comic.idx > comic.max_idx) {
+      result.erroneousComics.push(comic)
+    } else {
+      result.readComics.push(comic)
+    }
+  })
+
+  return result
 }
 
 function countUnreadPages (comics) {
-  validate(comics)
-  return filterUnread(comics).reduce((totalPages, comic) => {
+  return sortReadUnreadComics(comics).unreadComics.reduce((totalPages, comic) => {
     return totalPages + 1 + (comic.max_idx - comic.idx)
   }, 0)
-}
-
-function filterRead (comics) {
-  validate(comics)
-  return comics.filter(comic => comic.idx === comic.max_idx)
 }
 
 /**
@@ -35,8 +46,7 @@ function filterErroneous (comics) {
 }
 
 module.exports = {
-  filterUnread,
   countUnreadPages,
-  filterRead,
-  filterErroneous
+  filterErroneous,
+  sortReadUnreadComics
 }

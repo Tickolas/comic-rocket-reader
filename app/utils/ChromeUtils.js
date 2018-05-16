@@ -2,6 +2,16 @@ function openSingleNewTabFor (comic) {
   openNewTabFor(comic, true)
 }
 
+function openAllComicsInTabs (comics) {
+  comics.forEach((comic, index) => {
+    if (index === comics.length - 1) {
+      openSingleNewTabFor(comic)
+    } else {
+      openOneOfManyNewTabFor(comic)
+    }
+  })
+}
+
 function openOneOfManyNewTabFor (comic) {
   openNewTabFor(comic, false)
 }
@@ -16,5 +26,5 @@ function getWrappedUriFor (comic) {
 
 export default {
   openSingleNewTabFor,
-  openOneOfManyNewTabFor
+  openAllComicsInTabs
 }

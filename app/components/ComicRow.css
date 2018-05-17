@@ -1,0 +1,41 @@
+.comicRow {
+    width: 400px;
+    display: flex;
+}
+
+.comicRow__banner {
+    width: 300px;
+    height: 40px;
+    border: 2px solid white;
+    padding: 1px;
+}
+
+.comicRow__banner__image {
+    width: 100%;
+    height: 100%;
+}
+
+.comicRow__banner__placeholder {
+    padding-left: 5px;
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.comicRow__pages {
+    border: 2px solid white;
+    flex-grow: 1;
+    position: relative;
+}
+
+.comicRow__pages__text {
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+}

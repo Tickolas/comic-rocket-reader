@@ -7,6 +7,7 @@ import Comics from '../api/Comics'
 import { updateBadgeText } from '../utils/BadgeUtils'
 import { sortReadUnreadComics } from '../utils/ComicsUtil'
 import { UNREAD_COMICS } from '../constants/DisplayModes'
+import style from './App.css'
 
 export default class App extends Component {
   constructor (props) {
@@ -36,7 +37,7 @@ export default class App extends Component {
 
   render () {
     return (
-      <div>
+      <div className={style.app}>
         <Header onDisplayModeChange={this.changeDisplayMode.bind(this)}
           isLoggedIn={this.state.isLoggedIn}
           hasErroneousComics={!!(this.state.comics && this.state.comics.erroneousComics.length)} />

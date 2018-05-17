@@ -8,6 +8,7 @@ import { updateBadgeText } from '../utils/BadgeUtils'
 import { sortReadUnreadComics } from '../utils/ComicsUtil'
 import { UNREAD_COMICS } from '../constants/DisplayModes'
 import style from './App.css'
+import Loading from '../components/Loading'
 
 export default class App extends Component {
   constructor (props) {
@@ -44,7 +45,7 @@ export default class App extends Component {
         {
           this.state.isLoggedIn && this.state.comics
             ? <MainSection comics={this.state.comics[this.state.displayMode]} />
-            : <div>{'Please do log in.'}</div>
+            : <Loading />
         }
         <Footer comics={this.state.comics && this.state.comics[this.state.displayMode]} isLoggedIn={this.state.isLoggedIn} />
       </div>

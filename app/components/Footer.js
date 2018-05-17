@@ -18,7 +18,7 @@ const Footer = ({comics, isLoggedIn}) => {
 }
 
 Footer.propTypes = {
-  comics: PropTypes.array.isRequired,
+  comics: PropTypes.array,
   isLoggedIn: PropTypes.bool
 }
 

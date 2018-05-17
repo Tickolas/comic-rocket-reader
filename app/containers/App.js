@@ -37,7 +37,9 @@ export default class App extends Component {
   render () {
     return (
       <div>
-        <Header onDisplayModeChange={this.changeDisplayMode.bind(this)} />
+        <Header onDisplayModeChange={this.changeDisplayMode.bind(this)}
+          isLoggedIn={this.state.isLoggedIn}
+          hasErroneousComics={!!(this.state.comics && this.state.comics.erroneousComics.length)} />
         {
           this.state.isLoggedIn && this.state.comics
             ? <MainSection comics={this.state.comics[this.state.displayMode]} />

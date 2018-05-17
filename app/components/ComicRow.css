@@ -1,12 +1,12 @@
 .comicRow {
     display: flex;
     cursor: pointer;
+    border-top: 2px solid white;
 }
 
 .comicRow__banner {
     width: 300px;
     height: 40px;
-    border: 2px solid white;
     padding: 1px;
 }
 
@@ -23,13 +23,12 @@
     white-space: nowrap;
     font-size: 14px;
     font-weight: bold;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .comicRow__pages {
-    border: 2px solid white;
+    border-left: 2px solid white;
     flex-grow: 1;
     position: relative;
 }

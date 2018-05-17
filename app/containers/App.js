@@ -16,7 +16,6 @@ export default class App extends Component {
 
     this.state = {
       isLoggedIn: false,
-      unreadComics: [],
       displayMode: UNREAD_COMICS
     }
   }

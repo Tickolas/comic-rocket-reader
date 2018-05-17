@@ -6,7 +6,7 @@ import { openAllComicsInTabs } from '../utils/ChromeUtils'
 const Footer = ({comics, isLoggedIn}) => {
   const getOpenAllButton = () => {
     if (isLoggedIn) {
-      return <button onClick={() => { openAllComicsInTabs(comics) }}>Open 'em all!'</button>
+      return <button className={style.footer__button} onClick={() => { openAllComicsInTabs(comics) }}>Open 'em all!'</button>
     }
   }
 

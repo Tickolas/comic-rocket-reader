@@ -1,0 +1,10 @@
+.footer {
+    height: 40px;
+}
+
+.footer__button {
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    cursor: pointer;
+}

@@ -1,12 +1,13 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
 import { UNREAD_COMICS, READ_COMICS, ERRONEUS_COMICS } from '../constants/DisplayModes'
+import style from './Header.css'
 
 const Header = ({onDisplayModeChange, hasErroneousComics, isLoggedIn}) => {
   const getDisplayModeButtons = () => {
     if (isLoggedIn) {
       return (
-        <div>
+        <div className={style.header__buttons}>
           <button onClick={() => onDisplayModeChange(UNREAD_COMICS)}>Unread</button>
           <button onClick={() => onDisplayModeChange(READ_COMICS)}>Read</button>
           { getErroneousComicsDisplayModeButton() }
@@ -24,8 +25,8 @@ const Header = ({onDisplayModeChange, hasErroneousComics, isLoggedIn}) => {
   }
 
   return (
-    <header>
-      <img src='img/reader-logo.png' alt='Comic Rocket Reader' />
+    <header className={style.header}>
+      <img className={style.header__banner} src='img/reader-logo.png' alt='Comic Rocket Reader' />
       { getDisplayModeButtons() }
     </header>
   )

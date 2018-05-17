@@ -1,3 +1,5 @@
+**Welcome to Comic Rocket Reader!**
+
 All unread pages of your favorite serials, served by Comic Rocket and presented in a nice, clean list.
 Having trouble keeping up with all your webcomics even with the might of Comic Rocket to help you? Then this extension is for you!
 
@@ -5,9 +7,9 @@ Comic Rocket Reader will present all unread pages of your favorite webcomics in 
 
 Enjoy!
 
-Patch notes:
+**Patch notes:**
 
-<b>3.0.0</b> - Current release. Rewritten from scratch, should have tons better performance with the same features.
+**3.0.0** - Current release. Rewritten from scratch, should have tons better performance with the same features.
 
 2.3.0 - Added options to customize your Comic Rocket Reader experience as well as a button to open a random backlogged comic. Enjoy!
 

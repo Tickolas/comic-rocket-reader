@@ -40,6 +40,13 @@ Header.propTypes = {
   isLoggedIn: PropTypes.bool
 }
 
+const mapStateToProps = (state) => {
+  return {
+    state,
+    isLoggedIn: state.appReducer.isLoggedIn
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onDisplayModeChange: (displayMode) => {
@@ -48,4 +55,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(state => state, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

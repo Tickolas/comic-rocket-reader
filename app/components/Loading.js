@@ -3,9 +3,9 @@ import style from './Loading.css'
 
 const Loading = () => {
   return (
-    <div className={style.loading}>
+    <section className={style.loading}>
       <img className={style.loading__image} src='img/loading.gif' alt='Loading your comics...' />
-    </div>
+    </section>
   )
 }
 

@@ -2,6 +2,8 @@ import React from 'react'
 import { PropTypes } from 'prop-types'
 import { UNREAD_COMICS, READ_COMICS, ERRONEUS_COMICS } from '../constants/DisplayModes'
 import style from './Header.css'
+import { connect } from 'react-redux'
+import { CHANGE_DISPLAY_MODE } from '../constants/ActionTypes'
 
 const Header = ({onDisplayModeChange, hasErroneousComics, isLoggedIn}) => {
   const getDisplayModeButtons = () => {
@@ -38,4 +40,12 @@ Header.propTypes = {
   isLoggedIn: PropTypes.bool
 }
 
-export default Header
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onDisplayModeChange: (displayMode) => {
+      dispatch({type: CHANGE_DISPLAY_MODE, payload: {displayMode}})
+    }
+  }
+}
+
+export default connect(state => state, mapDispatchToProps)(Header)

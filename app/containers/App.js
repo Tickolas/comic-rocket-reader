@@ -6,7 +6,6 @@ import Login from '../api/Login'
 import Comics from '../api/Comics'
 import { updateBadgeText } from '../utils/BadgeUtils'
 import { sortReadUnreadComics } from '../utils/ComicsUtil'
-import { UNREAD_COMICS } from '../constants/DisplayModes'
 import style from './App.css'
 import Loading from '../components/Loading'
 import { connect } from 'react-redux'
@@ -15,11 +14,8 @@ class App extends Component {
   constructor (props) {
     super(props)
 
-    console.log('APP', props.state)
-
     this.state = {
-      isLoggedIn: false,
-      displayMode: UNREAD_COMICS
+      isLoggedIn: false
     }
   }
 
@@ -34,19 +30,14 @@ class App extends Component {
     })
   }
 
-  changeDisplayMode (displayMode) {
-    this.setState({displayMode})
-  }
-
   render () {
     return (
       <div className={style.app}>
-        <Header onDisplayModeChange={this.changeDisplayMode.bind(this)}
-          isLoggedIn={this.state.isLoggedIn}
+        <Header isLoggedIn={this.state.isLoggedIn}
           hasErroneousComics={!!(this.state.comics && this.state.comics.erroneousComics.length)} />
         {
           this.state.isLoggedIn && this.state.comics
-            ? <MainSection comics={this.state.comics[this.state.displayMode]} />
+            ? <MainSection comics={this.state.comics[this.props.state.appReducer.displayMode]} />
             : <Loading />
         }
         <Footer comics={this.state.comics && this.state.comics[this.state.displayMode]} isLoggedIn={this.state.isLoggedIn} />

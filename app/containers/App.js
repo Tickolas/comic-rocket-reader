@@ -9,10 +9,13 @@ import { sortReadUnreadComics } from '../utils/ComicsUtil'
 import { UNREAD_COMICS } from '../constants/DisplayModes'
 import style from './App.css'
 import Loading from '../components/Loading'
+import { connect } from 'react-redux'
 
-export default class App extends Component {
+class App extends Component {
   constructor (props) {
     super(props)
+
+    console.log('APP', props.state)
 
     this.state = {
       isLoggedIn: false,
@@ -51,3 +54,11 @@ export default class App extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    state
+  }
+}
+
+export default connect(mapStateToProps)(App)

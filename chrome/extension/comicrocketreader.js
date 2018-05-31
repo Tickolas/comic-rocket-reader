@@ -2,10 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Root from '../../app/containers/Root'
 import './comicrocketreader.css'
+import { initialState } from '../../app/reducers/index'
 
 chrome.storage.local.get('state', (obj) => {
-  const { state } = obj
-  const initialState = JSON.parse(state || '{}')
+  // TODO: Enable get stored state
+  // const { state } = obj
+  // const initialStateStored = JSON.parse(state || '{}')
 
   const createStore = require('../../app/store/configureStore')
 

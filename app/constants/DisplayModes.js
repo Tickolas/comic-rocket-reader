@@ -1,7 +1,3 @@
-const DisplayModes = {
-  UNREAD_COMICS: 'unreadComics',
-  READ_COMICS: 'readComics',
-  ERRONEUS_COMICS: 'erroneousComics'
-}
-
-export default DisplayModes
+export const UNREAD_COMICS = 'unreadComics'
+export const READ_COMICS = 'readComics'
+export const ERRONEUS_COMICS = 'erroneousComics'

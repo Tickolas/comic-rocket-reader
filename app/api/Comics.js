@@ -11,10 +11,7 @@ function get () {
         comics: result.data
       }
     })
-  }).catch(() => Promise.resolve((e) => {
-    console.warn('Could not get comics', e)
-    return []
-  }))
+  }).catch(() => Promise.resolve([]))
 }
 
 export default {

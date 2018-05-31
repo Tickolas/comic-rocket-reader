@@ -1,6 +1,6 @@
 import http from 'axios'
 import { FETCH_COMICS } from './Paths'
-import store  from '../store/Store'
+import store from '../store/Store'
 import { COMICS_FETCHED } from '../constants/ActionTypes'
 
 function get () {

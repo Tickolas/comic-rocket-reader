@@ -1,33 +1,20 @@
-const bluebird = require('bluebird')
+/* global chrome */
 
-global.Promise = bluebird
+import http from 'axios'
+import { FETCH_COMICS } from '../../app/api/Paths'
 
-function promisifier (method) {
-  // return a function
-  return function promisified (...args) {
-    // which returns a promise
-    return new Promise((resolve) => {
-      args.push(resolve)
-      method.apply(this, args)
-    })
-  }
+const updateComics = () => {
+  http.get(FETCH_COMICS).then((result) => {
+    chrome.storage.local.set({comicRocketReader: {
+      comics: result.data
+    }})
+  })
+
+  setTimeout(() => {
+    updateComics()
+  }, 120000)
 }
 
-function promisifyAll (obj, list) {
-  list.forEach(api => bluebird.promisifyAll(obj[api], { promisifier }))
-}
+updateComics()
 
-// let chrome extension api support Promise
-promisifyAll(window.chrome, [
-  'tabs',
-  'windows',
-  'browserAction',
-  'contextMenus'
-])
-promisifyAll(window.chrome.storage, [
-  'local'
-])
-
-require('./background/contextMenus')
-require('./background/inject')
 require('./background/badge')

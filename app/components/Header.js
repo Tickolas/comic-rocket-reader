@@ -1,20 +1,27 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import { ERRONEUS_COMICS, READ_COMICS, UNREAD_COMICS } from '../constants/DisplayModes'
+import { BACKLOGGED_COMICS, ERRONEUS_COMICS, READ_COMICS, UNREAD_COMICS } from '../constants/DisplayModes'
 import style from './Header.css'
 import { connect } from 'react-redux'
 import { CHANGE_DISPLAY_MODE } from '../constants/ActionTypes'
 
-const Header = ({onDisplayModeChange, hasErroneousComics, isFullyLoaded}) => {
+const Header = ({onDisplayModeChange, hasErroneousComics, hasBackloggedComics, isFullyLoaded}) => {
   const getDisplayModeButtons = () => {
     if (isFullyLoaded) {
       return (
         <div className={style.header__buttons}>
           <button onClick={() => onDisplayModeChange(UNREAD_COMICS)}>Unread</button>
           <button onClick={() => onDisplayModeChange(READ_COMICS)}>Read</button>
+          { getBackloggedComicsDisplayModeButton() }
           { getErroneousComicsDisplayModeButton() }
         </div>
       )
+    }
+  }
+
+  const getBackloggedComicsDisplayModeButton = () => {
+    if (hasBackloggedComics) {
+      return <button onClick={() => onDisplayModeChange(BACKLOGGED_COMICS)}>Backlog</button>
     }
   }
 
@@ -37,13 +44,15 @@ const Header = ({onDisplayModeChange, hasErroneousComics, isFullyLoaded}) => {
 Header.propTypes = {
   onDisplayModeChange: PropTypes.func.isRequired,
   hasErroneousComics: PropTypes.bool.isRequired,
+  hasBackloggedComics: PropTypes.bool.isRequired,
   isFullyLoaded: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = (state) => {
   return {
     isFullyLoaded: state.appReducer.isFullyLoaded,
-    hasErroneousComics: !!state.comicsReducer.comics && !!state.comicsReducer.comics.erroneousComics.length
+    hasErroneousComics: !!state.comicsReducer.comics && !!state.comicsReducer.comics.erroneousComics.length,
+    hasBackloggedComics: !!state.comicsReducer.comics && !!state.comicsReducer.comics.backloggedComics.length
   }
 }
 

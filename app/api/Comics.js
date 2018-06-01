@@ -22,7 +22,8 @@ function get () {
     store.dispatch({
       type: COMICS_FETCHED,
       payload: {
-        comics
+        comics,
+        backlog: data.comicRocketReader.backlog || []
       }
     })
   })

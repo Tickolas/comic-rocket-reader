@@ -20,6 +20,13 @@ describe('ComicsUtils', () => {
       expect(result.readComics).toEqual([ComicWith.NO_UNREAD_PAGES])
       expect(result.erroneousComics).toEqual([ComicWith.ERRONEOUS_PAGE_COUNT])
     })
+
+    it('should sort comics marked as backlog', () => {
+      const result = ComicsUtils.sortReadUnreadComics([ComicWith.UNREAD_PAGES, ComicWith.MANY_UNREAD_PAGES], [ComicWith.MANY_UNREAD_PAGES.slug])
+
+      expect(result.backloggedComics).toEqual([ComicWith.MANY_UNREAD_PAGES])
+      expect(result.unreadComics).toEqual([ComicWith.UNREAD_PAGES])
+    })
   })
 
   describe('filter comics with erroneous page count', () => {

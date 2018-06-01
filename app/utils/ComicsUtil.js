@@ -4,17 +4,20 @@ function validate (comics) {
   }
 }
 
-const sortReadUnreadComics = (comics) => {
+const sortReadUnreadComics = (comics, backlog) => {
   validate(comics)
 
   const result = {
     unreadComics: [],
     readComics: [],
-    erroneousComics: []
+    erroneousComics: [],
+    backloggedComics: []
   }
 
   comics.forEach(comic => {
-    if (comic.idx < comic.max_idx) {
+    if (backlog && backlog.find(slug => slug === comic.slug)) {
+      result.backloggedComics.push(comic)
+    } else if (comic.idx < comic.max_idx) {
       result.unreadComics.push(comic)
     } else if (comic.idx > comic.max_idx) {
       result.erroneousComics.push(comic)

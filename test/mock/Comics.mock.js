@@ -16,7 +16,7 @@ const MANY_UNREAD_PAGES = {
   uri: 'http://www.jonathondalton.com/?p=325',
   max_idx: 3000,
   banner_url: 'https://www.comic-rocket.com/public/banner/a-mad-tea-party.gif',
-  slug: 'a-mad-tea-party'
+  slug: 'bloom-county'
 }
 const UNUSUAL_NAME = {
   rating: 'PG',

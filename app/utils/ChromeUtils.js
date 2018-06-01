@@ -21,7 +21,8 @@ function openNewTabFor (comic, closeExtension) {
 }
 
 function getWrappedUriFor (comic) {
-  return encodeURI(`http://www.comic-rocket.com/read/${comic.slug}/${(comic.idx + 1)}?mark`)
+  const page = comic.idx === comic.max_idx ? comic.max_idx : comic.idx + 1
+  return encodeURI(`http://www.comic-rocket.com/read/${comic.slug}/${(page)}?mark`)
 }
 
 export default {

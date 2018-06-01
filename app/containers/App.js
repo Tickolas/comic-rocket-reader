@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import style from './App.css'
-import Loading from '../components/Loading'
 import { connect } from 'react-redux'
 import { LOGIN_CHECK } from '../constants/ActionTypes'
-import ComicsList from '../components/ComicsList'
+import MainSection from '../components/MainSection'
 
 class App extends Component {
   componentDidMount () {
@@ -16,11 +15,7 @@ class App extends Component {
     return (
       <div className={style.app}>
         <Header />
-        {
-          this.props.isFullyLoaded
-            ? <ComicsList />
-            : <Loading />
-        }
+        <MainSection />
         <Footer />
       </div>
     )
@@ -29,7 +24,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isFullyLoaded: state.appReducer.isLoggedIn && !!state.comicsReducer.comics
+    isFullyLoaded: state.appReducer.isFullyLoaded
   }
 }
 

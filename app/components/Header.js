@@ -1,6 +1,6 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import { UNREAD_COMICS, READ_COMICS, ERRONEUS_COMICS } from '../constants/DisplayModes'
+import { ERRONEUS_COMICS, READ_COMICS, UNREAD_COMICS } from '../constants/DisplayModes'
 import style from './Header.css'
 import { connect } from 'react-redux'
 import { CHANGE_DISPLAY_MODE } from '../constants/ActionTypes'
@@ -42,7 +42,7 @@ Header.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    isFullyLoaded: state.appReducer.isLoggedIn && !!state.comicsReducer.comics,
+    isFullyLoaded: state.appReducer.isFullyLoaded,
     hasErroneousComics: !!state.comicsReducer.comics && !!state.comicsReducer.comics.erroneousComics.length
   }
 }

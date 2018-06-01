@@ -7,7 +7,7 @@ function isLoggedIn () {
   http.get(paths.LOGIN_CHECK).then(() => {
     store.dispatch({
       type: LOGGED_IN,
-      payload: { isLoggedIn: true }
+      payload: { isFullyLoaded: false, isLoggedIn: true }
     })
   }).then(() => {
     store.dispatch({
@@ -17,7 +17,7 @@ function isLoggedIn () {
     if (error.response.status === 401) {
       store.dispatch({
         type: LOGGED_IN,
-        payload: { isLoggedIn: false }
+        payload: { isFullyLoaded: true, isLoggedIn: false }
       })
     } else {
       throw new Error('Unknown error')

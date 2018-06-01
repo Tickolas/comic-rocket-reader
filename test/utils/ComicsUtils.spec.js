@@ -61,9 +61,14 @@ describe('ComicsUtils', () => {
     })
 
     it('should count number of total unread pages in mock', () => {
-      const result = ComicsUtils.countUnreadPages(ComicsMock)
+      const result = ComicsUtils.countUnreadPages([
+        ComicWith.MANY_UNREAD_PAGES,
+        ComicWith.NO_UNREAD_PAGES,
+        ComicWith.UNREAD_PAGES,
+        ComicWith.UNUSUAL_NAME
+      ])
 
-      expect(result).toEqual(42)
+      expect(result).toEqual(3044)
     })
   })
 })

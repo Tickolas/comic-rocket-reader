@@ -1,9 +1,9 @@
 /* global chrome */
 
 import http from 'axios'
-import { FETCH_COMICS } from './Paths'
+import Paths from './Paths'
 import store from '../store/Store'
-import { COMICS_FETCHED } from '../constants/ActionTypes'
+import { COMICS_FETCHED, FETCH_COMICS } from '../constants/ActionTypes'
 
 function get () {
   chrome.storage.local.get(['comicRocketReader'], (data) => {
@@ -12,7 +12,7 @@ function get () {
     if (data.comicRocketReader && data.comicRocketReader.comics) {
       comics = data.comicRocketReader.comics
     } else {
-      return http.get(FETCH_COMICS).then((result) => {
+      return http.get(Paths.FETCH_COMICS).then((result) => {
         comics = result.data
       }).catch(() => {
         comics = []
@@ -29,6 +29,43 @@ function get () {
   })
 }
 
+function addToBacklog (comic) {
+  chrome.storage.local.get(['comicRocketReader'], (data) => {
+    const backlog = data.comicRocketReader.backlog || []
+
+    backlog.push(comic.slug)
+
+    chrome.storage.local.set({
+      comicRocketReader: {...data.comicRocketReader, backlog}
+    })
+
+    store.dispatch({
+      type: FETCH_COMICS
+    })
+  })
+}
+
+function removeFromBacklog (comic) {
+  chrome.storage.local.get(['comicRocketReader'], (data) => {
+    const backlog = data.comicRocketReader.backlog || []
+    const index = backlog.indexOf(comic.slug)
+
+    if (index !== -1) {
+      backlog.splice(index, 1)
+
+      chrome.storage.local.set({
+        comicRocketReader: {...data.comicRocketReader, backlog}
+      })
+
+      store.dispatch({
+        type: FETCH_COMICS
+      })
+    }
+  })
+}
+
 export default {
-  get
+  get,
+  addToBacklog,
+  removeFromBacklog
 }

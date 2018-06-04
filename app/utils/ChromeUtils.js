@@ -20,6 +20,10 @@ function openNewTabFor (comic, closeExtension) {
   window.chrome.tabs.create({ active: !!closeExtension, url: getWrappedUriFor(comic) })
 }
 
+function openLoginTab () {
+  window.chrome.tabs.create({ active: true, url: 'https://www.comic-rocket.com/login' })
+}
+
 function getWrappedUriFor (comic) {
   const page = comic.idx === comic.max_idx ? comic.max_idx : comic.idx + 1
   return encodeURI(`http://www.comic-rocket.com/read/${comic.slug}/${(page)}?mark`)
@@ -27,5 +31,6 @@ function getWrappedUriFor (comic) {
 
 export default {
   openSingleNewTabFor,
-  openAllComicsInTabs
+  openAllComicsInTabs,
+  openLoginTab
 }

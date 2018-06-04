@@ -19,5 +19,3 @@ const updateComics = () => {
 }
 
 updateComics()
-
-require('./background/badge')

@@ -3,13 +3,14 @@ import { PropTypes } from 'prop-types'
 import ComicsList from './ComicsList'
 import Loading from './Loading'
 import { connect } from 'react-redux'
+import ChromeUtils from '../utils/ChromeUtils'
 
 const MainSection = ({isLoggedIn, isFullyLoaded}) => {
   const getContent = () => {
     if (isFullyLoaded && isLoggedIn) {
       return <ComicsList />
     } else if (isFullyLoaded && !isLoggedIn) {
-      return <div>Log in, dummy</div>
+      return <div>Please click <a href='#' onClick={ChromeUtils.openLoginTab}>Here</a> to log in!</div>
     } else {
       return <Loading />
     }

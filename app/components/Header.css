@@ -2,6 +2,7 @@
     height: 50px;
     display: flex;
     position: relative;
+    border-bottom: 1px solid white;
 }
 
 .header__bannerContainer {

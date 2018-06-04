@@ -9,6 +9,7 @@ const updateComics = () => {
     const unreadPages = countUnreadPages(result.data)
     chrome.browserAction.setBadgeText({ text: unreadPages < 1000 ? '' + unreadPages : '...' })
     chrome.storage.local.set({comicRocketReader: {
+      ...result.data.comicRocketReader,
       comics: result.data
     }})
   })

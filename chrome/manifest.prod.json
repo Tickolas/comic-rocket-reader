@@ -23,5 +23,5 @@
     "storage",
     "https://www.comic-rocket.com/*"
   ],
-  "content_security_policy": "default-src 'self'; script-src 'self'; connect-src 'https://www.comic-rocket.com'; style-src * 'unsafe-inline'; img-src 'self' https://www.comic-rocket.com data:;"
+  "content_security_policy": "default-src 'self'; script-src 'self' https://www.comic-rocket.com 'unsafe-eval'; connect-src https://www.comic-rocket.com; style-src * 'unsafe-inline' 'self' blob:; img-src 'self' https://www.comic-rocket.com data:;"
 }

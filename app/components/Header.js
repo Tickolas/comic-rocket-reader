@@ -4,10 +4,11 @@ import { BACKLOGGED_COMICS, ERRONEUS_COMICS, READ_COMICS, UNREAD_COMICS } from '
 import style from './Header.css'
 import { connect } from 'react-redux'
 import { CHANGE_DISPLAY_MODE } from '../constants/ActionTypes'
+import ChromeUtils from '../utils/ChromeUtils'
 
-const Header = ({onDisplayModeChange, hasErroneousComics, hasBackloggedComics, isFullyLoaded}) => {
+const Header = ({onDisplayModeChange, hasErroneousComics, hasBackloggedComics, isLoggedIn, isFullyLoaded}) => {
   const getDisplayModeButtons = () => {
-    if (isFullyLoaded) {
+    if (isLoggedIn && isFullyLoaded) {
       return (
         <div className={style.header__buttons}>
           <button onClick={() => onDisplayModeChange(UNREAD_COMICS)}>Unread</button>
@@ -35,7 +36,9 @@ const Header = ({onDisplayModeChange, hasErroneousComics, hasBackloggedComics, i
 
   return (
     <header className={style.header}>
-      <img className={style.header__banner} src='img/reader-logo.png' alt='Comic Rocket Reader' />
+      <a className={style.header__bannerContainer} href='#' title='Go to Comic Rocket' onClick={ChromeUtils.openLoginTab}>
+        <img className={style.header__banner} src='img/reader-logo.png' alt='Comic Rocket Reader' />
+      </a>
       { getDisplayModeButtons() }
     </header>
   )
@@ -45,11 +48,13 @@ Header.propTypes = {
   onDisplayModeChange: PropTypes.func.isRequired,
   hasErroneousComics: PropTypes.bool.isRequired,
   hasBackloggedComics: PropTypes.bool.isRequired,
-  isFullyLoaded: PropTypes.bool.isRequired
+  isFullyLoaded: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = (state) => {
   return {
+    isLoggedIn: state.appReducer.isLoggedIn,
     isFullyLoaded: state.appReducer.isFullyLoaded,
     hasErroneousComics: !!state.comicsReducer.comics && !!state.comicsReducer.comics.erroneousComics.length,
     hasBackloggedComics: !!state.comicsReducer.comics && !!state.comicsReducer.comics.backloggedComics.length

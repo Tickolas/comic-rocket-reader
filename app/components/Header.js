@@ -1,6 +1,6 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import { BACKLOGGED_COMICS, ERRONEUS_COMICS, READ_COMICS, UNREAD_COMICS } from '../constants/DisplayModes'
+import { BACKLOGGED_COMICS, ERRONEUS_COMICS, READ_COMICS, SETTINGS, UNREAD_COMICS } from '../constants/DisplayModes'
 import style from './Header.css'
 import { connect } from 'react-redux'
 import { CHANGE_DISPLAY_MODE } from '../constants/ActionTypes'
@@ -15,6 +15,7 @@ const Header = ({onDisplayModeChange, hasErroneousComics, hasBackloggedComics, i
           <button onClick={() => onDisplayModeChange(READ_COMICS)}>Read</button>
           { getBackloggedComicsDisplayModeButton() }
           { getErroneousComicsDisplayModeButton() }
+          <button onClick={() => onDisplayModeChange(SETTINGS)}>Settings</button>
         </div>
       )
     }

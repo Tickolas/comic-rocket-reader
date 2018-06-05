@@ -4,10 +4,15 @@ import ComicsList from './ComicsList'
 import Loading from './Loading'
 import { connect } from 'react-redux'
 import ChromeUtils from '../utils/ChromeUtils'
+import { SETTINGS } from '../constants/DisplayModes'
+import SettingsSection from './SettingsSection'
 
-const MainSection = ({isLoggedIn, isFullyLoaded}) => {
+const MainSection = ({displayMode, isLoggedIn, isFullyLoaded}) => {
   const getContent = () => {
     if (isFullyLoaded && isLoggedIn) {
+      if (displayMode === SETTINGS) {
+        return <SettingsSection />
+      }
       return <ComicsList />
     } else if (isFullyLoaded && !isLoggedIn) {
       return <div>Please click <a href='#' onClick={ChromeUtils.openLoginTab}>Here</a> to log in!</div>
@@ -29,6 +34,7 @@ MainSection.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
+    displayMode: state.appReducer.displayMode,
     isFullyLoaded: state.appReducer.isFullyLoaded,
     isLoggedIn: state.appReducer.isLoggedIn
   }

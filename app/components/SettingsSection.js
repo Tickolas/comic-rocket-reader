@@ -2,35 +2,40 @@ import React from 'react'
 import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux'
 import { BY_COMIC_NAME, BY_UNREAD_PAGES } from '../constants/SortModes'
-import { CHANGE_SORT_MODE } from '../constants/ActionTypes'
+import { CHANGE_SETTINGS } from '../constants/ActionTypes'
 
-const SettingsSection = ({changeSortMode, sortMode}) => {
+const SettingsSection = ({changeSettings, settings}) => {
   return (
     <section>
       <div>
         <span>Sort by: </span>
-        <input type='radio' name='sortBy' onClick={() => changeSortMode(BY_COMIC_NAME)} checked={sortMode === BY_COMIC_NAME} /> Comic Name<br />
-        <input type='radio' name='sortBy' onClick={() => changeSortMode(BY_UNREAD_PAGES)} checked={sortMode === BY_UNREAD_PAGES} /> Pages Left<br />
+        <input type='radio' name='sortBy' onClick={() => changeSettings({sortMode: BY_COMIC_NAME})} checked={settings.sortMode === BY_COMIC_NAME} /> Comic Name<br />
+        <input type='radio' name='sortBy' onClick={() => changeSettings({sortMode: BY_UNREAD_PAGES})} checked={settings.sortMode === BY_UNREAD_PAGES} /> Pages Left<br />
+      </div>
+      <div>
+        <span>Reverse: </span>
+        <input type='radio' name='sortOrder' onClick={() => changeSettings({reverseSort: true})} checked={settings.reverseSort} /> Yes<br />
+        <input type='radio' name='sortOrder' onClick={() => changeSettings({reverseSort: false})} checked={!settings.reverseSort} /> No<br />
       </div>
     </section>
   )
 }
 
 SettingsSection.propTypes = {
-  changeSortMode: PropTypes.func.isRequired,
-  sortMode: PropTypes.string.isRequired
+  changeSettings: PropTypes.func.isRequired,
+  settings: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => {
   return {
-    sortMode: state.appReducer.settings.sortMode
+    settings: state.appReducer.settings
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeSortMode: sortMode => {
-      dispatch({type: CHANGE_SORT_MODE, payload: {sortMode}})
+    changeSettings: settings => {
+      dispatch({type: CHANGE_SETTINGS, payload: {settings}})
     }
   }
 }

@@ -1,5 +1,5 @@
 import { UNREAD_COMICS } from '../constants/DisplayModes'
-import { CHANGE_DISPLAY_MODE, CHANGE_SORT_MODE, COMICS_FETCHED, LOGGED_IN, LOGIN_CHECK } from '../constants/ActionTypes'
+import { CHANGE_DISPLAY_MODE, CHANGE_SETTINGS, COMICS_FETCHED, LOGGED_IN, LOGIN_CHECK } from '../constants/ActionTypes'
 import Login from '../api/Login'
 import { BY_COMIC_NAME } from '../constants/SortModes'
 
@@ -7,7 +7,8 @@ export const initialState = {
   isLoggedIn: false,
   isFullyLoaded: false,
   settings: {
-    sortMode: BY_COMIC_NAME
+    sortMode: BY_COMIC_NAME,
+    reverseSort: false
   },
   displayMode: UNREAD_COMICS
 }
@@ -27,8 +28,8 @@ const AppReducer = (state = initialState, action) => {
     case CHANGE_DISPLAY_MODE: {
       return {...state, displayMode: action.payload.displayMode}
     }
-    case CHANGE_SORT_MODE: {
-      return {...state, settings: {...state.settings, sortMode: action.payload.sortMode}}
+    case CHANGE_SETTINGS: {
+      return {...state, settings: {...state.settings, ...action.payload.settings}}
     }
   }
 

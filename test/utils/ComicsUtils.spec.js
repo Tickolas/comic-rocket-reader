@@ -2,6 +2,7 @@
 
 import ComicsUtils from '../../app/utils/ComicsUtil'
 import { ComicsMock, ComicWith } from '../mock/Comics.mock'
+import { BY_COMIC_NAME, BY_UNREAD_PAGES } from '../../app/constants/SortModes'
 
 describe('ComicsUtils', () => {
   describe('function to sort comics into read and unread', () => {
@@ -76,6 +77,36 @@ describe('ComicsUtils', () => {
       ])
 
       expect(result).toEqual(3044)
+    })
+  })
+
+  describe('function to compare comics for sorting', () => {
+    it('should exist', () => {
+      expect(ComicsUtils.compareComics).toBeDefined()
+    })
+
+    it('should sort three comics by name correctly', () => {
+      const comicsToSort = [ComicWith.NO_UNREAD_PAGES, ComicWith.MANY_UNREAD_PAGES, ComicWith.UNUSUAL_NAME]
+      const expected = [ComicWith.MANY_UNREAD_PAGES, ComicWith.NO_UNREAD_PAGES, ComicWith.UNUSUAL_NAME]
+      expect(comicsToSort.sort((a, b) => ComicsUtils.compareComics(a, b, BY_COMIC_NAME, false))).toEqual(expected)
+    })
+
+    it('should sort three comics by name reversed correctly', () => {
+      const comicsToSort = [ComicWith.NO_UNREAD_PAGES, ComicWith.MANY_UNREAD_PAGES, ComicWith.UNUSUAL_NAME]
+      const expected = [ComicWith.UNUSUAL_NAME, ComicWith.NO_UNREAD_PAGES, ComicWith.MANY_UNREAD_PAGES]
+      expect(comicsToSort.sort((a, b) => ComicsUtils.compareComics(a, b, BY_COMIC_NAME, true))).toEqual(expected)
+    })
+
+    it('should sort three comics by pages left correctly', () => {
+      const comicsToSort = [ComicWith.UNUSUAL_NAME, ComicWith.MANY_UNREAD_PAGES, ComicWith.UNREAD_PAGES]
+      const expected = [ComicWith.UNUSUAL_NAME, ComicWith.UNREAD_PAGES, ComicWith.MANY_UNREAD_PAGES]
+      expect(comicsToSort.sort((a, b) => ComicsUtils.compareComics(a, b, BY_UNREAD_PAGES, false))).toEqual(expected)
+    })
+
+    it('should sort three comics by pages left reversed correctly', () => {
+      const comicsToSort = [ComicWith.UNUSUAL_NAME, ComicWith.MANY_UNREAD_PAGES, ComicWith.UNREAD_PAGES]
+      const expected = [ComicWith.MANY_UNREAD_PAGES, ComicWith.UNREAD_PAGES, ComicWith.UNUSUAL_NAME]
+      expect(comicsToSort.sort((a, b) => ComicsUtils.compareComics(a, b, BY_UNREAD_PAGES, true))).toEqual(expected)
     })
   })
 })

@@ -1,10 +1,14 @@
 import { UNREAD_COMICS } from '../constants/DisplayModes'
 import { CHANGE_DISPLAY_MODE, COMICS_FETCHED, LOGGED_IN, LOGIN_CHECK } from '../constants/ActionTypes'
 import Login from '../api/Login'
+import { BY_COMIC_NAME } from '../constants/SortModes'
 
 export const initialState = {
   isLoggedIn: false,
   isFullyLoaded: false,
+  settings: {
+    sortMode: BY_COMIC_NAME
+  },
   displayMode: UNREAD_COMICS
 }
 

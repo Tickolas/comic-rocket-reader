@@ -1,0 +1,2 @@
+export const BY_UNREAD_PAGES = 'BY_UNREAD_PAGES'
+export const BY_COMIC_NAME = 'BY_COMIC_NAME'

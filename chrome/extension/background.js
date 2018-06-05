@@ -17,7 +17,7 @@ const updateComics = () => {
 
   setTimeout(() => {
     updateComics()
-  }, 4000)
+  }, 120000)
 }
 
 updateComics()

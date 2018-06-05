@@ -5,23 +5,33 @@ import style from './ComicsList.css'
 import { connect } from 'react-redux'
 import { BY_COMIC_NAME, BY_UNREAD_PAGES } from '../constants/SortModes'
 
-const ComicsList = ({comics, sortOrder}) => {
-  function sortFunction (comicA, comicB) {
+const ComicsList = ({comics, sortOrder, reverseSort}) => {
+  function compareComics (comicA, comicB) {
+    let a
+    let b
+
     if (sortOrder === BY_COMIC_NAME) {
-      if (comicA.name.toUpperCase() < comicB.name.toUpperCase()) { return -1 }
-      if (comicA.name.toUpperCase() > comicB.name.toUpperCase()) { return 1 }
-      return 0
+      a = comicA.name.toUpperCase()
+      b = comicB.name.toUpperCase()
     } else if (sortOrder === BY_UNREAD_PAGES) {
-      if ((comicA.max_idx - comicA.idx) < (comicB.max_idx - comicB.idx)) { return -1 }
-      if ((comicA.max_idx - comicA.idx) > (comicB.max_idx - comicB.idx)) { return 1 }
-      return 0
+      a = comicA.max_idx - comicA.idx
+      b = comicB.max_idx - comicB.idx
     }
+
+    if (!reverseSort) {
+      if (a < b) { return -1 }
+      if (a > b) { return 1 }
+    } else {
+      if (a > b) { return -1 }
+      if (a < b) { return 1 }
+    }
+    return 0
   }
 
   return (
     <section className={style.comicsList}>
       {
-        comics.sort(sortFunction).map(comic =>
+        comics.sort(compareComics).map(comic =>
           <ComicRow key={comic.slug} comic={comic} />
         )
       }
@@ -31,13 +41,15 @@ const ComicsList = ({comics, sortOrder}) => {
 
 ComicsList.propTypes = {
   comics: PropTypes.array.isRequired,
-  sortOrder: PropTypes.string.isRequired
+  sortOrder: PropTypes.string.isRequired,
+  reverseSort: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = (state) => {
   return {
     comics: state.comicsReducer.comics[state.appReducer.displayMode],
-    sortOrder: state.appReducer.settings.sortMode
+    sortOrder: state.appReducer.settings.sortMode,
+    reverseSort: state.appReducer.settings.reverseSort
   }
 }
 

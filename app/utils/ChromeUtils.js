@@ -1,3 +1,6 @@
+import { SETTINGS_SYNCED } from '../constants/ActionTypes'
+import store from '../store/Store'
+
 function openSingleNewTabFor (comic) {
   openNewTabFor(comic, true)
 }
@@ -29,8 +32,29 @@ function getWrappedUriFor (comic) {
   return encodeURI(`http://www.comic-rocket.com/read/${comic.slug}/${(page)}?mark`)
 }
 
+function getSettings () {
+  window.chrome.storage.local.get(['comicRocketReader'], (data) => {
+    store.dispatch({
+      type: SETTINGS_SYNCED,
+      payload: {
+        settings: data.comicRocketReader.settings
+      }
+    })
+  })
+}
+
+function saveSettings (settings) {
+  window.chrome.storage.local.get(['comicRocketReader'], (data) => {
+    let comicRocketReader = data.comicRocketReader
+    comicRocketReader.settings = settings
+    window.chrome.storage.local.set({comicRocketReader})
+  })
+}
+
 export default {
   openSingleNewTabFor,
   openAllComicsInTabs,
-  openLoginTab
+  openLoginTab,
+  getSettings,
+  saveSettings
 }

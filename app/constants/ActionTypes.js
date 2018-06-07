@@ -1,4 +1,6 @@
 export const LOGIN_CHECK = 'LOGIN_CHECK'
+export const SYNC_SETTINGS = 'SYNC_SETTINGS'
+export const SETTINGS_SYNCED = 'SETTINGS_SYNCED'
 export const LOGGED_IN = 'LOGGED_IN'
 export const FETCH_COMICS = 'FETCH_COMICS'
 export const COMICS_FETCHED = 'COMICS_FETCHED'

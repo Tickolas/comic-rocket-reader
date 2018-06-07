@@ -1,6 +1,6 @@
 {
-  "version": "3.0.0",
-  "name": "Comic Rocker Reader",
+  "version": "3.0.1",
+  "name": "Comic Rocker Reader BETA",
   "manifest_version": 2,
   "description": "Never miss a webcomic page again!",
   "browser_action": {

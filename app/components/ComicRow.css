@@ -34,18 +34,6 @@
     position: relative;
 }
 
-.comicRow__backlogButton {
-    border-left: 2px solid white;
-    flex: 1 1 40px;
-    position: relative;
-    line-height: 40px;
-    white-space: nowrap;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    background: #c44310;
-}
-
 .comicRow__pages__text {
     font-weight: bold;
     position: absolute;

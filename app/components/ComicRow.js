@@ -3,27 +3,15 @@ import { PropTypes } from 'prop-types'
 import { openSingleNewTabFor } from '../utils/ChromeUtils'
 import style from './ComicRow.css'
 import { connect } from 'react-redux'
-import { ADD_COMIC_TO_BACKLOG, REMOVE_COMIC_FROM_BACKLOG } from '../constants/ActionTypes'
 import { PAGES_LEFT, X_SLASH_Y } from '../constants/UnreadPageMode'
+import BacklogButton from './BacklogButton'
 
-const ComicRow = ({comic, backlog, unreadPageMode, addToBacklog, removeFromBacklog}) => {
+const ComicRow = ({comic, unreadPageMode}) => {
   function getBanner () {
     if (comic.banner_url) {
       return <img className={style.comicRow__banner__image} src={comic.banner_url} alt={comic.name} />
     } else {
       return <div className={style.comicRow__banner__placeholder}><div>{comic.name}</div></div>
-    }
-  }
-
-  function getBacklogButton () {
-    if (!backlog.find(slug => slug === comic.slug)) {
-      return <div className={style.comicRow__backlogButton} onClick={() => addToBacklog(comic)}>
-        <img className={style.backlogButton__content} src='img/arrow-down.png' />
-      </div>
-    } else {
-      return <div className={style.comicRow__backlogButton} onClick={() => removeFromBacklog(comic)}>
-        <img className={style.backlogButton__content} src='img/arrow-up.png' />
-      </div>
     }
   }
 
@@ -43,47 +31,20 @@ const ComicRow = ({comic, backlog, unreadPageMode, addToBacklog, removeFromBackl
       <div className={style.comicRow__pages}>
         {getPagesLeft()}
       </div>
-      {
-        getBacklogButton()
-      }
+      <BacklogButton comic={comic} />
     </div>
   )
 }
 
 ComicRow.propTypes = {
   comic: PropTypes.object.isRequired,
-  backlog: PropTypes.array.isRequired,
-  unreadPageMode: PropTypes.string.isRequired,
-  addToBacklog: PropTypes.func.isRequired,
-  removeFromBacklog: PropTypes.func.isRequired
+  unreadPageMode: PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state) => {
   return {
-    backlog: state.comicsReducer.backlog,
     unreadPageMode: state.appReducer.settings.unreadPageMode
   }
 }
 
-function mapDispatchToProps (dispatch) {
-  return {
-    addToBacklog: comic => {
-      dispatch({
-        type: ADD_COMIC_TO_BACKLOG,
-        payload: {
-          comic
-        }
-      })
-    },
-    removeFromBacklog: comic => {
-      dispatch({
-        type: REMOVE_COMIC_FROM_BACKLOG,
-        payload: {
-          comic
-        }
-      })
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ComicRow)
+export default connect(mapStateToProps)(ComicRow)

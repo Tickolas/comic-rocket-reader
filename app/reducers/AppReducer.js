@@ -11,13 +11,15 @@ import {
 import Login from '../api/Login'
 import { BY_COMIC_NAME } from '../constants/SortModes'
 import ChromeUtils from '../utils/ChromeUtils'
+import { PAGES_LEFT } from '../constants/UnreadPageMode'
 
 export const initialState = {
   isLoggedIn: false,
   isFullyLoaded: false,
   settings: {
     sortMode: BY_COMIC_NAME,
-    reverseSort: false
+    reverseSort: false,
+    unreadPageMode: PAGES_LEFT
   },
   displayMode: UNREAD_COMICS
 }

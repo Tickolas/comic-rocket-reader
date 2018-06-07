@@ -1,0 +1,14 @@
+.pagesLeft {
+    border-left: 2px solid white;
+    flex: 1 1 80px;
+    position: relative;
+}
+
+.pagesLeft__text {
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+}

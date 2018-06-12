@@ -1,26 +1,22 @@
-import http from 'axios'
-import paths from './Paths'
 import store from '../../app/store/Store'
 import { FETCH_COMICS, LOGGED_IN } from '../constants/ActionTypes'
+import ChromeStorage from './ChromeStorage'
 
 function isLoggedIn () {
-  http.get(paths.LOGIN_CHECK).then(() => {
-    store.dispatch({
-      type: LOGGED_IN,
-      payload: { isFullyLoaded: false, isLoggedIn: true }
-    })
-  }).then(() => {
-    store.dispatch({
-      type: FETCH_COMICS
-    })
-  }).catch((error) => {
-    if (error.response.status === 401) {
+  ChromeStorage.get().then(data => {
+    if (data.comicRocketReader.isLoggedIn) {
+      store.dispatch({
+        type: LOGGED_IN,
+        payload: { isFullyLoaded: false, isLoggedIn: true }
+      })
+      store.dispatch({
+        type: FETCH_COMICS
+      })
+    } else {
       store.dispatch({
         type: LOGGED_IN,
         payload: { isFullyLoaded: true, isLoggedIn: false }
       })
-    } else {
-      throw new Error('Unknown error')
     }
   })
 }

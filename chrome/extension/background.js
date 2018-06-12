@@ -6,9 +6,9 @@ import { countUnreadPages } from '../../app/utils/ComicsUtil'
 
 const updateComics = () => {
   http.get(FETCH_COMICS).then((result) => {
-    const unreadPages = countUnreadPages(result.data)
-    chrome.browserAction.setBadgeText({ text: unreadPages < 1000 ? '' + unreadPages : 'Lots' })
     chrome.storage.local.get('comicRocketReader', storage => {
+      const unreadPages = countUnreadPages(result.data.filter(comic => storage.comicRocketReader.backlog.indexOf(comic.slug) === -1))
+      chrome.browserAction.setBadgeText({ text: unreadPages < 10000 ? '' + unreadPages : 'Lots' })
       const comicRocketReader = storage.comicRocketReader || {}
       comicRocketReader.comics = result.data
       chrome.storage.local.set({comicRocketReader})

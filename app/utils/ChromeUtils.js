@@ -1,5 +1,6 @@
 import { SETTINGS_SYNCED } from '../constants/ActionTypes'
 import store from '../store/Store'
+import ChromeStorage from '../api/ChromeStorage'
 
 function openSingleNewTabFor (comic) {
   openNewTabFor(comic, true)
@@ -33,7 +34,7 @@ function getWrappedUriFor (comic) {
 }
 
 function getSettings () {
-  window.chrome.storage.local.get(['comicRocketReader'], (data) => {
+  ChromeStorage.get().then(data => {
     store.dispatch({
       type: SETTINGS_SYNCED,
       payload: {
@@ -44,11 +45,7 @@ function getSettings () {
 }
 
 function saveSettings (settings) {
-  window.chrome.storage.local.get(['comicRocketReader'], (data) => {
-    let comicRocketReader = data.comicRocketReader
-    comicRocketReader.settings = settings
-    window.chrome.storage.local.set({comicRocketReader})
-  })
+  ChromeStorage.set({settings})
 }
 
 export default {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import Header from '../components/Header'
+import Banner from '../components/Banner'
 import Footer from '../components/Footer'
+import ControlBar from '../components/ControlBar'
 import style from './App.css'
 import { connect } from 'react-redux'
 import { LOGIN_CHECK, SYNC_SETTINGS } from '../constants/ActionTypes'
@@ -15,7 +16,8 @@ class App extends Component {
   render () {
     return (
       <div className={style.app}>
-        <Header />
+        <Banner />
+        <ControlBar />
         <MainSection />
         <Footer />
       </div>

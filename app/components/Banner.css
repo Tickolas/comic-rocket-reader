@@ -1,0 +1,9 @@
+.banner {
+    cursor: pointer;
+    outline: 0;
+}
+
+.banner__banner {
+    width: 100%;
+    margin: 0 5px;
+}

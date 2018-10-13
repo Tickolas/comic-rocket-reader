@@ -1,0 +1,9 @@
+.controlBar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.controlBar__button {
+    flex: 1;
+}
